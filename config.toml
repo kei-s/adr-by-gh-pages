@@ -1,4 +1,4 @@
-baseURL = 'http://example.org/'
+baseURL = 'http://kei.shiratsu.ch/adr-by-gh-pages/'
 languageCode = 'ja'
 title = 'ADR'
 theme = 'xmin'
