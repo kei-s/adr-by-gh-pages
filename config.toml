@@ -1,0 +1,17 @@
+baseURL = 'http://example.org/'
+languageCode = 'ja'
+title = 'ADR'
+theme = 'xmin'
+
+[[menu.main]]
+name = "Home"
+url = ""
+weight = 1
+
+[[menu.main]]
+name = "Tags"
+url = "tags/"
+weight = 2
+
+[params]
+footer = "[GitHub](https://github.com/kei-s/adr)"
