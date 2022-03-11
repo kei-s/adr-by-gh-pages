@@ -14,4 +14,4 @@ url = "tags/"
 weight = 2
 
 [params]
-footer = "[GitHub](https://github.com/kei-s/adr)"
+footer = "[GitHub](https://github.com/kei-s/adr-by-gh-pages)"
