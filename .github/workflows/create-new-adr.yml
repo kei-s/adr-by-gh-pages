@@ -6,6 +6,8 @@ on:
 jobs:
   create-pr:
     runs-on: ubuntu-20.04
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v2
         with:
