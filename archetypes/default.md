@@ -2,9 +2,9 @@
 title: "{{ getenv "TITLE" | default (replace .Name "-" " " | title) }}"
 date: {{ .Date }}
 tags:
-  - 
+  # - 
 author:
-  -
+  # -
 ---
 
 # ステータス

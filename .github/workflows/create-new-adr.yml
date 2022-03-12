@@ -30,10 +30,12 @@ jobs:
           set -x
           pr_name=`date '+%Y%m%d-%H%M'`
           git checkout -b ${pr_name}
-          TITLE="${{ github.event.inputs.title }}" hugo new "adr/${pr_name}-${{ github.event.inputs.title }}.md"
+          # trim using xargs
+          title=`echo ${{ github.event.inputs.title }} | xargs`
+          TITLE="${title}" hugo new "adr/${pr_name}-${title}.md"
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
           git commit -m 'Create new adr'
           git push origin ${pr_name}
-          gh pr create -B main -t "${{ github.event.inputs.title }}" -b "(GitHub Actions により自動作成されました。ファイルを編集してください)"
+          gh pr create -B main -t "${title}" -b "(GitHub Actions により自動作成されました。ファイルを編集してください)"
