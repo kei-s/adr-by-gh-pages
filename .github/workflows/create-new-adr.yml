@@ -2,6 +2,12 @@ name: Create new ADR
 
 on:
   workflow_dispatch:
+    inputs:
+      title:
+        description: 'タイトル'
+        required: false
+        type: string
+        
 
 jobs:
   create-pr:
@@ -22,13 +28,13 @@ jobs:
 
       - name: Create new file and pull request
         run: |
-          pr_name=`date '+%Y%m%d-%H%M'`
+          pr_name=`date '+%Y%m%d-%H'`
           set -x
           git checkout -b ${pr_name}
-          hugo new adr/${pr_name}.md
+          hugo new "adr/${pr_name}-${{ github.event.inputs.title }}.md"
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
           git commit -m 'Create new adr'
           git push origin ${pr_name}
-          gh pr create -B main -t ${pr_name} -b ""
+          gh pr create -B main -t ${{ github.event.inputs.title }} -b ""
