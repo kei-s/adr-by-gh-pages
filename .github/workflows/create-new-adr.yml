@@ -1,0 +1,32 @@
+name: Create new ADR
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.91.2'
+          # extended: true
+
+      - name: Create new file
+        run: |
+          set -x
+          git co -b `date '+%Y%m%d-%H%M'`
+          hugo new adr/`date '+%Y%m%d-%H%M'`.md
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m 'Create new adr'
+      - name: Create release pr
+        run: |
+          gh pr create -B main -t ${{ steps.check_pr.outputs.pr_title }} -b ""
