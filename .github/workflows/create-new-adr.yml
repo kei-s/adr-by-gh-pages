@@ -27,8 +27,8 @@ jobs:
 
       - name: Create new file and pull request
         run: |
-          pr_name=`date '+%Y%m%d-%H%M'`
           set -x
+          pr_name=`date '+%Y%m%d-%H%M'`
           git checkout -b ${pr_name}
           TITLE="${{ github.event.inputs.title }}" hugo new "adr/${pr_name}-${{ github.event.inputs.title }}.md"
           git config user.name github-actions
@@ -36,4 +36,4 @@ jobs:
           git add .
           git commit -m 'Create new adr'
           git push origin ${pr_name}
-          gh pr create -B main -t "${{ github.event.inputs.title }}" -b ""
+          gh pr create -B main -t "${{ github.event.inputs.title }}" -b "(GitHub Actions により自動作成されました。ファイルを編集してください)"
