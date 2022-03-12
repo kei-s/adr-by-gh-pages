@@ -29,4 +29,5 @@ jobs:
           git commit -m 'Create new adr'
       - name: Create release pr
         run: |
-          gh pr create -B main -t ${{ steps.check_pr.outputs.pr_title }} -b ""
+          set -x
+          gh pr create -B main -t `date '+%Y%m%d-%H%M'` -b ""
