@@ -8,7 +8,7 @@
 
 1. Run workflow
 
-    This workflow create new ADR file and pull request.
+    This workflow create new ADR file and open pull request.
 
     <img width="892" alt="Actions_·_kei-s_adr-by-gh-pages" src="https://user-images.githubusercontent.com/8451/158020025-2272b5b5-1781-432a-a573-ee7f69218aad.png">
 
