@@ -20,13 +20,15 @@ jobs:
           hugo-version: '0.91.2'
           # extended: true
 
-      - name: Create new file
+      - name: Create new file and pull request
         run: |
+          pr_name=`date '+%Y%m%d-%H%M'`
           set -x
-          git checkout -b `date '+%Y%m%d-%H%M'`
-          hugo new adr/`date '+%Y%m%d-%H%M'`.md
+          git checkout -b ${pr_name}
+          hugo new adr/${pr_name}.md
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
           git commit -m 'Create new adr'
-          gh pr create -B main -t `date '+%Y%m%d-%H%M'` -b ""
+          git push origin ${pr_name}
+          gh pr create -B main -t ${pr_name} -b ""
