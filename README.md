@@ -14,6 +14,3 @@
 
 1. Edit ADR file on created pull request
 
-    
-
-     
