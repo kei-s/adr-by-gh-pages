@@ -37,4 +37,4 @@ jobs:
           git add .
           git commit -m 'Create new adr'
           git push origin ${pr_name}
-          gh pr create -B main -t ${{ github.event.inputs.title }} -b ""
+          gh pr create -B main -t "${{ github.event.inputs.title }}" -b ""
