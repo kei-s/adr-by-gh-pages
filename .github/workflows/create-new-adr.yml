@@ -28,7 +28,7 @@ jobs:
 
       - name: Create new file and pull request
         run: |
-          pr_name=`date '+%Y%m%d-%H'`
+          pr_name=`date '+%Y%m%d-%H%M'`
           set -x
           git checkout -b ${pr_name}
           hugo new "adr/${pr_name}-${{ github.event.inputs.title }}.md"
