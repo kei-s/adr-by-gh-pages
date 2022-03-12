@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy to GitHub Pages (If branch is not main, only test build)
 
 on:
   push:
