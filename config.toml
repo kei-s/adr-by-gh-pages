@@ -15,3 +15,6 @@ weight = 2
 
 [params]
 footer = "[GitHub](https://github.com/kei-s/adr-by-gh-pages)"
+
+[security.funcs]
+getenv = ['^HUGO_', 'TITLE']
