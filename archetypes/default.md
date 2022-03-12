@@ -1,5 +1,5 @@
 ---
-title: "{{ replace .Name "-" " " | title }}"
+title: "{{ getenv "TITLE" }}"
 date: {{ .Date }}
 tags:
   - 

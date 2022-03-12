@@ -5,9 +5,8 @@ on:
     inputs:
       title:
         description: 'タイトル'
-        required: false
+        required: true
         type: string
-        
 
 jobs:
   create-pr:
@@ -31,7 +30,7 @@ jobs:
           pr_name=`date '+%Y%m%d-%H%M'`
           set -x
           git checkout -b ${pr_name}
-          hugo new "adr/${pr_name}-${{ github.event.inputs.title }}.md"
+          TITLE="${{ github.event.inputs.title }}" hugo new "adr/${pr_name}-${{ github.event.inputs.title }}.md"
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
